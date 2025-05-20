@@ -34,11 +34,11 @@ export const signupUser = async (req, res) => {
 
     // Send token as HttpOnly cookie
     res.cookie("token", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "Strict",
-      maxAge: 24 * 60 * 60 * 1000 // 1 day
-    });
+  httpOnly: true,
+  secure: true,               // ✅ Must be true for HTTPS (Render uses HTTPS)
+  sameSite: "None",           // ✅ Allow cross-origin
+  maxAge: 24 * 60 * 60 * 1000 // 1 day
+});
 
     // Respond with user data and token (excluding password)
     res.status(201).json({
@@ -85,11 +85,11 @@ export const loginUser = async (req, res) => {
 
     // Send token as HttpOnly cookie
     res.cookie("token", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "Strict",
-      maxAge: 24 * 60 * 60 * 1000 // 1 day
-    });
+  httpOnly: true,
+  secure: true,               // ✅ Must be true for HTTPS (Render uses HTTPS)
+  sameSite: "None",           // ✅ Allow cross-origin
+  maxAge: 24 * 60 * 60 * 1000 // 1 day
+});
 
     // Respond with minimal user info (no password)
     res.status(200).json({
@@ -143,8 +143,8 @@ export const getUsers = async (req, res) => {
 export const logoutUser = (req, res) => {
   res.clearCookie("token", {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "Strict", // or "None" if you're using cross-site cookies
+    secure: true,       // ✅ required for HTTPS / production
+    sameSite: "None",   // ✅ must match how it was originally set
   });
 
   return res.json({ message: "Logged out successfully" });
