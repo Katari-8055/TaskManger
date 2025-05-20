@@ -36,7 +36,7 @@ const Home = () => {
 
   const getUserInfo = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/auth/getuser", {
+      const res = await axios.get("https://taskmanger-backend-awlj.onrender.com/api/auth/getuser", {
         withCredentials: true, // include cookies (important if you're using auth cookies)
       });
 
@@ -54,7 +54,7 @@ const Home = () => {
 
   const getAllNotes = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/note/getnotes", {
+      const res = await axios.get("https://taskmanger-backend-awlj.onrender.com/api/note/getnotes", {
         withCredentials: true, // include cookies for auth
       });
 
@@ -76,7 +76,7 @@ const Home = () => {
     const noteId = data._id;
     try {
       const res = await axios.delete(
-        `http://localhost:5000/api/note/deletenote/${noteId}`,
+        `https://taskmanger-backend-awlj.onrender.com/api/note/deletenote/${noteId}`,
         { withCredentials: true }
       );
 
@@ -96,7 +96,7 @@ const Home = () => {
   const onSearchNotes = async (query) => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/note/searchnotes",
+        "https://taskmanger-backend-awlj.onrender.com/api/note/searchnotes",
         {
           params: { query },
           withCredentials: true,
@@ -123,7 +123,7 @@ const Home = () => {
     const noteId = data._id;
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/note/pinnednotes/${noteId}`,
+        `https://taskmanger-backend-awlj.onrender.com/api/note/pinnednotes/${noteId}`,
       { isPinned: !data.isPinned }, // ✅ request body
       { withCredentials: true }    // ✅ request config
       );
@@ -144,7 +144,7 @@ const Home = () => {
 
  const useLogout = async () => {
   try {
-    await axios.post("http://localhost:5000/api/auth/logout", {}, { withCredentials: true });
+    await axios.post("https://taskmanger-backend-awlj.onrender.com/api/auth/logout", {}, { withCredentials: true });
     toast.success("Logged out");
   } catch (error) {
     console.error("Logout failed:", error.response?.data || error.message);

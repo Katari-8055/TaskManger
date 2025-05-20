@@ -42,7 +42,7 @@ const Signup = () => {
     setError(null); // Clear previous errors if any
     // Call API here or do signup logic...
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/signup", {
+      const res = await axios.post("https://taskmanger-backend-awlj.onrender.com/api/auth/signup", {
         name,
         email,
         password,
