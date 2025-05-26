@@ -15,7 +15,7 @@ const AddEditNotes = ({getAllNotes, noteData, type, onClose }) => {
   const addNewNote = async () => {
   try {
     const res = await axios.post(
-      "http://localhost:5000/api/note/addnotes",
+      "https://taskmanger-frontend-9atm.onrender.com/api/note/addnotes",
       { title, content, tags },
       {
         withCredentials: true, // Send auth cookie
@@ -42,7 +42,7 @@ const AddEditNotes = ({getAllNotes, noteData, type, onClose }) => {
 
   try {
     const res = await axios.put(
-      `http://localhost:5000/api/note/editnotes/${noteId}`, // ✅ Added `/`
+      `https://taskmanger-frontend-9atm.onrender.com/api/note/editnotes/${noteId}`, // ✅ Added `/`
       { title, content, tags },
       {
         withCredentials: true, // ✅ Keeps cookies (like JWT)
