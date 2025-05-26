@@ -16,7 +16,10 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({
-  origin: "https://taskmanger-frontend-9atm.onrender.com",  // frontend URL
+  origin: [
+    "http://localhost:5173",
+    "https://taskmanger-frontend.onrender.com" // 👉 तेरे फ्रंटेंड का Render वाला लिंक
+  ],
   credentials: true,
 }));
 app.use(express.json());
